@@ -6,6 +6,10 @@ public class Product {
 
     private float price;
 
+    public Product() {
+
+    }
+
     public Product(String name,float price) {
         this.name = name;
         this.price = price;
