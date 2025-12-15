@@ -1,0 +1,19 @@
+{
+  "server": {
+    "port": 8080,
+    "host": "0.0.0.0"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "database": "ecommerce",
+    "user": "ecommerce",
+    "password": "ecommerce123",
+    "maxPoolSize": 10
+  },
+  "jwt": {
+    "secret": "your-super-secret-key-change-in-production-min-256-bits",
+    "issuer": "85labs-ecommerce",
+    "expirationMinutes": 60
+  }
+}

@@ -3,14 +3,15 @@ package br.com.labs.model;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public class Item {
+public class OrderItem {
 
     private UUID id;
+    private UUID orderId;
     private UUID productId;
     private int quantity;
     private BigDecimal unitPrice;
 
-    public Item() {}
+    public OrderItem() {}
 
     // Getters and Setters
     public UUID getId() {
@@ -19,6 +20,14 @@ public class Item {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public UUID getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(UUID orderId) {
+        this.orderId = orderId;
     }
 
     public UUID getProductId() {
@@ -46,6 +55,7 @@ public class Item {
     }
 
     public BigDecimal getSubtotal() {
+        if (unitPrice == null) return BigDecimal.ZERO;
         return unitPrice.multiply(BigDecimal.valueOf(quantity));
     }
 
@@ -55,10 +65,15 @@ public class Item {
     }
 
     public static class Builder {
-        private final Item item = new Item();
+        private final OrderItem item = new OrderItem();
 
         public Builder id(UUID id) {
             item.id = id;
+            return this;
+        }
+
+        public Builder orderId(UUID orderId) {
+            item.orderId = orderId;
             return this;
         }
 
@@ -77,7 +92,7 @@ public class Item {
             return this;
         }
 
-        public Item build() {
+        public OrderItem build() {
             return item;
         }
     }
